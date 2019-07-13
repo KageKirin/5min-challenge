@@ -23,7 +23,7 @@ def main(args):
     count_good = 0
     count_bad = 0
 
-    end_timer = time.time() + args.time * 10
+    end_timer = time.time() + args.time * 60
 
     while time.time() < end_timer:
         count_exe += 1
