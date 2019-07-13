@@ -26,6 +26,8 @@ def main(args):
     count_bad = 0
 
     end_timer = time.time() + args.time * 60
+    if args.debug:
+        end_timer = time.time() + 5
 
     while time.time() < end_timer:
         count_exe += 1
@@ -46,6 +48,7 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
+    parser.add_argument('--debug', help='debug mode', action='store_true')
     parser.add_argument('-t', '--time', help='time (min)', type=int, default=1)
     parser.add_argument('-o', '--operand', help='operand', choices=['+', '-', '*', '/', '%'], type=str, default='+')
     parser.add_argument('-r', '--range', help='range', type=int, default=10)
