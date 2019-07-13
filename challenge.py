@@ -32,18 +32,17 @@ def main(args):
     while time.time() < end_timer:
         count_exe += 1
         exe = create_exercise(args)
-        print(exe)
-        result = input('> ') or 0
+        result = input(exe + ' = ') or 0
         ok = eval_exercise(exe, result)
         if ok:
             count_good += 1
         else:
             count_bad += 1
-        print(ok)
+        print('👍' if ok else '👎')
     
     print("exercises:", count_exe)
-    print("good:", count_good, "/", count_exe)
-    print("bad:", count_bad, "/", count_exe)
+    print("👍:", count_good, "/", count_exe)
+    print("👎:", count_bad, "/", count_exe)
     
 
 if __name__ == '__main__':
