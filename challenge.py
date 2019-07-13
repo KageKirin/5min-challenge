@@ -8,11 +8,13 @@ def create_exercise(args):
     b = random.randint(0, args.range)
     if args.operand == '-' and not args.negative:
         a = random.randint(b, args.range)
+    if args.operand == '/' or args.operand == '%':
+        b = random.randint(1, args.range)
     
     return "{} {} {}".format(a, args.operand, b)
 
 def eval_exercise(computation, result):
-    rr = eval(computation)
+    rr = int(eval(computation))
     print(rr)
     if rr == int(result):
         return True
@@ -45,7 +47,7 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-t', '--time', help='time (min)', type=int, default=1)
-    parser.add_argument('-o', '--operand', help='operand', choices=['+', '-'], type=str, default='+')
+    parser.add_argument('-o', '--operand', help='operand', choices=['+', '-', '*', '/', '%'], type=str, default='+')
     parser.add_argument('-r', '--range', help='range', type=int, default=10)
     parser.add_argument('--negative', help='allow negatives', action='store_true')
     args = parser.parse_args()
