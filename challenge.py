@@ -6,8 +6,8 @@ import os, sys, time, random, argparse
 def create_exercise(args):
     a = random.randint(0, args.range)
     b = random.randint(0, args.range)
-    if args.negative and args.operand == '-':
-        b = random.randint(a, args.range)
+    if args.operand == '-' and not args.negative:
+        a = random.randint(b, args.range)
     
     return "{} {} {}".format(a, args.operand, b)
 
