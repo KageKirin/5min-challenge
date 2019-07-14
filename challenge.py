@@ -47,11 +47,11 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--debug', help='debug mode', action='store_true')
     parser.add_argument('-t', '--time', help='time (min)', type=int, default=1)
     parser.add_argument('-o', '--operation', help='operation', choices=['+', '-', '*', '/', '%'], type=str, default='+')
     parser.add_argument('-r', '--range', help='range', type=int, default=10)
-    parser.add_argument('--negative', help='allow negatives', action='store_true')
+    parser.add_argument('--negative', help='allow negative numbers as result', action='store_true')
+    parser.add_argument('--debug', help='debug mode', action='store_true')
     args = parser.parse_args()
     random.seed()
     main(args)
