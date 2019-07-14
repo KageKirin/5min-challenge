@@ -6,12 +6,12 @@ import os, sys, time, random, argparse
 def create_exercise(args):
     a = random.randint(0, args.range)
     b = random.randint(0, args.range)
-    if args.operand == '-' and not args.negative:
+    if args.operation == '-' and not args.negative:
         a = random.randint(b, args.range)
-    if args.operand == '/' or args.operand == '%':
+    if args.operation == '/' or args.operation == '%':
         b = random.randint(1, args.range)
     
-    return "{} {} {}".format(a, args.operand, b)
+    return "{} {} {}".format(a, args.operation, b)
 
 def eval_exercise(computation, result):
     rr = int(eval(computation))
@@ -49,7 +49,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--debug', help='debug mode', action='store_true')
     parser.add_argument('-t', '--time', help='time (min)', type=int, default=1)
-    parser.add_argument('-o', '--operand', help='operand', choices=['+', '-', '*', '/', '%'], type=str, default='+')
+    parser.add_argument('-o', '--operation', help='operation', choices=['+', '-', '*', '/', '%'], type=str, default='+')
     parser.add_argument('-r', '--range', help='range', type=int, default=10)
     parser.add_argument('--negative', help='allow negatives', action='store_true')
     args = parser.parse_args()
